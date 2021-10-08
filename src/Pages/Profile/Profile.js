@@ -1,8 +1,9 @@
-import { Box, Container, Grid, Link, Typography } from '@material-ui/core';
+import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import HeaderProfile from '../../component/HeaderProfile';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -103,7 +104,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile-infor"
+										to="/profile-infor"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='man-logo'
@@ -125,7 +127,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='password-logo'
@@ -147,7 +150,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='social_network-logo'
@@ -171,7 +175,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='key-logo'
@@ -193,7 +198,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='3d-logo'
@@ -222,7 +228,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/home"
+										to="/home"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='viblo--dark-logo'
@@ -236,7 +243,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='viblo-code-logo'
@@ -251,7 +259,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='viblo-cv-logo'
@@ -268,7 +277,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='key--logo'
@@ -290,7 +300,8 @@ function Profile(props) {
 									<Link 
 										className={classes.paperLink} 
 										underline="none"
-										href="/profile"
+										to="/profile"
+										style={{textDecoration: 'none'}}
 									>
 										<img 
 											alt='3d-logo'

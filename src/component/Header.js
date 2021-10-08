@@ -2,9 +2,10 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import { Box, Link } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { makeStyles, alpha } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 300;
 
@@ -104,6 +105,7 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		width: 200,
 		height: 70,
+        textDecoration: 'none'
     },
     logoMenu: {
         width: '40px',
@@ -164,7 +166,7 @@ const Header = () => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Box display='flex' flexGrow={1}>
-                        <Link href='/home'>
+                        <Link to='/'>
                             <img 
                                 alt='logoheader-img'
                                 className={classes.logoHeader}
@@ -174,22 +176,24 @@ const Header = () => {
                         </Link>
                     </Box>
                     <>
-                        <Button 
-                            variant='contained'
-                            color='primary'
-                            className={classes.btnHeader}
-                            href='./login'
-                        >
-                            SIGN IN
-                        </Button>
-                        <Button 
-                            variant='contained'
-                            color='primary'
-                            className={classes.btnHeader}
-                            href='./register'
-                        >
-                            SIGN UP
-                        </Button>
+                        <Link to='./login' style={{textDecoration: 'none'}}>
+                            <Button 
+                                variant='contained'
+                                color='primary'
+                                className={classes.btnHeader}                                
+                            >
+                                SIGN IN
+                            </Button>
+                        </Link>
+                        <Link to='./register' style={{textDecoration: 'none'}}>
+                            <Button 
+                                variant='contained'
+                                color='primary'
+                                className={classes.btnHeader}                            
+                            >
+                                SIGN UP
+                            </Button>
+                        </Link>
                     </>
                 </Toolbar>
             </AppBar>    

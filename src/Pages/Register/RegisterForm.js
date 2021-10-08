@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { green } from '@material-ui/core/colors';
+import { styled } from '@material-ui/core';
+
+const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(green[500]),
+    backgroundColor: green[500],
+    '&:hover': {
+      backgroundColor: green[700],
+    },
+}));
 
 export default class RegisterForm extends Component {
     constructor(props) {
@@ -28,7 +38,9 @@ export default class RegisterForm extends Component {
         const {onSubmit} = this.props
 
         this.setState({ submitted: true }, () => {
-            this.setState({submitted: false})
+            setTimeout(()=>{
+                this.setState({submitted: false})
+            }, 3000)
             console.log(`this.state.formData`, this.state.formData)
             onSubmit(this.state.formData)
         });
@@ -94,20 +106,33 @@ export default class RegisterForm extends Component {
                         fullWidth
                     />
                     <br />
-                    <Button
-                        color="primary"
-                        variant="contained"
-                        type="submit"
-                        disabled={submitted}
-                        style={{
-                            marginTop: 20,
-                        }}
-                    >
-                        {
-                            (submitted && 'Đăng Ký Thành Công')
-                            || (!submitted && 'Đăng Ký')
-                        }
-                    </Button>
+                    { submitted ? (                  
+                        <ColorButton
+                            variant="contained"
+                            type="submit"
+                            
+                            style={{
+                                marginTop: 20,
+                            }}
+                            
+                        >
+                            Đăng ký thành công
+                        </ColorButton>
+                    ):(
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            
+                            style={{
+                                marginTop: 20,
+                            }}
+                        >
+                            Đăng ký
+                        </Button>
+                    )
+                        
+                    }
+                    
                 </ValidatorForm>
             </Grid>
         );

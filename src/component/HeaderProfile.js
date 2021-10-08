@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import { Box, IconButton, Link, Menu } from '@material-ui/core';
+import { Box, IconButton, Menu } from '@material-ui/core';
 import { makeStyles, withStyles, alpha } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -26,6 +26,7 @@ import AppsIcon from '@material-ui/icons/Apps';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 300;
 
@@ -215,7 +216,13 @@ const HeaderProfile = ({props}) => {
     
     const handleLogout = () => {
         USER_TOKEN.delete();
-        window.location.replace('/');
+        let payload = {
+            user: null,
+            token: null,
+            logged: false,
+        }
+        props.setAuth(payload);
+        props.history.push('/')
     }
     
 
@@ -228,7 +235,7 @@ const HeaderProfile = ({props}) => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Box display='flex' flexGrow={1}>
-                        <Link href='/home'>
+                        <Link to='/'>
                             <img 
                                 alt='logoheader-img'
                                 className={classes.logoHeader}
@@ -238,22 +245,24 @@ const HeaderProfile = ({props}) => {
                         </Link>
                     </Box>
                     <>
-                        <Button 
-                            variant='contained'
-                            color='primary'
-                            className={classes.btnHeader}
-                            href='./login'
-                        >
-                            SIGN IN
-                        </Button>
-                        <Button 
-                            variant='contained'
-                            color='primary'
-                            className={classes.btnHeader}
-                            href='./register'
-                        >
-                            SIGN UP
-                        </Button>
+                        <Link to='./login' style={{textDecoration: 'none'}}>
+                            <Button 
+                                variant='contained'
+                                color='primary'
+                                className={classes.btnHeader}
+                            >
+                                SIGN IN
+                            </Button>
+                        </Link>
+                        <Link to='./register' style={{textDecoration: 'none'}}>
+                            <Button 
+                                variant='contained'
+                                color='primary'
+                                className={classes.btnHeader}
+                            >
+                                SIGN UP
+                            </Button>
+                        </Link>
                     </>
                 </Toolbar>
             </AppBar>
@@ -263,7 +272,10 @@ const HeaderProfile = ({props}) => {
                         <AppBar position="fixed" className={classes.appBar}>
                             <Toolbar>
                                 <Box display='flex' flexGrow={1}>
-                                    <Link href='/home'>
+                                    <Link 
+                                        to='/home'
+                                        style={{textDecoration: 'none'}}
+                                    >
                                         <img 
                                             alt='logoHeader'
                                             className={classes.logoHeader}
@@ -293,8 +305,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
-                                                    href="/profile-infor"
+                                                    to="/profile-infor"
+                                                    style={{textDecoration: 'none'}}
                                                 >
                                                     <Avatar src={auth.user.avatar} className={classes.logoMenu}/>
                                                     <Typography 
@@ -310,8 +322,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
-                                                    href="/home"
+                                                    to="/home"
+                                                    style={{textDecoration: 'none'}}
                                                     
                                                 >
                                                     <img 
@@ -333,8 +345,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
-                                                    href="/profile-infor"
+                                                    to="/profile-infor"
+                                                    style={{textDecoration: 'none'}}
                                                 >
                                                     <img 
                                                         alt='password-logoMenu'
@@ -357,8 +369,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
-                                                    href="/profile-infor"
+                                                    to="/profile-infor"
+                                                    style={{textDecoration: 'none'}}
                                                 >
                                                     <img 
                                                         alt='password-logoMenu'
@@ -379,8 +391,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
-                                                    href="/profile-infor"
+                                                    to="/profile-infor"
+                                                    style={{textDecoration: 'none'}}
                                                 >
                                                     <img 
                                                         alt='password-logoMenu'
@@ -401,8 +413,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
-                                                    href="/profile-infor"
+                                                    to="/profile-infor"
+                                                    style={{textDecoration: 'none'}}
                                                 >
                                                     <img 
                                                         alt='password-logoMenu'
@@ -442,8 +454,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
-                                                    href="/profile-infor"
+                                                    style={{textDecoration: 'none'}}
+                                                    to="/profile-infor"
                                                 >
                                                     <Avatar src={auth.user.avatar} className={classes.logoMenu}/>
                                                     <Typography 
@@ -461,7 +473,8 @@ const HeaderProfile = ({props}) => {
                                             <Box className={classes.menuBox}>
                                                 <Link
                                                     className={classes.menuLink} 
-                                                    underline="none"
+                                                    to="/"
+                                                    style={{textDecoration: 'none'}}
                                                     onClick={()=>handleLogout()}
                                                 >
                                                     <ExitToAppIcon/>
@@ -495,11 +508,9 @@ const HeaderProfile = ({props}) => {
                                         <HomeIcon style={{marginRight: 10}}/>
                                         <Box>
                                             <Link
-                                                component="a"
-                                                underline='none'
-                                                color='inherit'
-                                                href="/profile"
+                                                to="/profile"
                                                 className={classes.accordionLink}
+                                                style={{textDecoration: 'none'}}
                                             >
                                                 Trang Chủ
                                             </Link>
@@ -521,10 +532,8 @@ const HeaderProfile = ({props}) => {
                                                 <AccountBoxIcon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile-infor"
+                                                        to="/profile-infor"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Thông Tin Cá Nhân
                                                     </Link>
@@ -534,10 +543,8 @@ const HeaderProfile = ({props}) => {
                                                 <RecentActorsIcon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile-contact"
+                                                        to="/profile-contact"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Thông Tin Liên Hệ
                                                     </Link>
@@ -547,10 +554,8 @@ const HeaderProfile = ({props}) => {
                                                 <MailOutlineIcon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile-email"
+                                                        to="/profile-email"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Email
                                                     </Link>
@@ -574,10 +579,8 @@ const HeaderProfile = ({props}) => {
                                                 <VpnKeyIcon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile"
+                                                        to="/profile"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Mật Khẩu
                                                     </Link>
@@ -587,10 +590,8 @@ const HeaderProfile = ({props}) => {
                                                 <AccountTreeIcon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile"
+                                                        to="/profile"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Tài Khoản Liên Kết
                                                     </Link>
@@ -614,10 +615,8 @@ const HeaderProfile = ({props}) => {
                                                 <AppsIcon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile"
+                                                        to="/profile"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Ứng dụng OAuth
                                                     </Link>
@@ -627,10 +626,8 @@ const HeaderProfile = ({props}) => {
                                                 <SportsHandballIcon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile"
+                                                        to="/profile"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Mã Bảo Mật Truy Cập Cá Nhân
                                                     </Link>
@@ -640,10 +637,8 @@ const HeaderProfile = ({props}) => {
                                                 <Brightness7Icon style={{marginRight: 10}}/>
                                                 <Box>
                                                     <Link
-                                                        component="a"
-                                                        underline='none'
-                                                        color='inherit'
-                                                        href="/profile"
+                                                        to="/profile"
+                                                        style={{textDecoration: 'none'}}
                                                     >
                                                         Ứng dụng OAuth được ủy quyền
                                                     </Link>

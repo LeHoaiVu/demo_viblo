@@ -1,7 +1,7 @@
 import React from 'react';
-import {  Box, Grid, Link, Paper, Typography } from "@material-ui/core";
+import {  Box, Grid, Paper, Typography } from "@material-ui/core";
 import ForgotPasswordForm from './ForgotPasswordForm';
-
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
 
@@ -18,7 +18,7 @@ const ForgotPassword = () => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <Link href='/home'>
+                <Link to='/home' style={{textDecoration: 'none'}}>
                     <img 
                         alt='logo'
                         style={{

@@ -7,6 +7,7 @@ import Footer from '../../component/Footer';
 import ScrollTop from '../../component/ScrollTop';
 import { Fab, Toolbar } from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import qs from 'query-string'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -74,6 +75,20 @@ const getPostes = async ({page, limit, category}) => {
 	})
 }
 
+const generalUrlParams = ({page, category}) => {
+	let url = '/home'
+	if (page || category) {
+		url += '?'
+	}
+	if (page) {
+		url += `&page=${page}`
+	}
+	if (category) {
+		url += `&category=${category}`
+	}
+	return url
+}
+
 function Home(props) {
 
 	const classes = useStyles();
@@ -93,16 +108,29 @@ function Home(props) {
 	}
 
 	useEffect(() => {
-		_getPostes({page: 1, limit: 10})
+		const queryParams = qs.parse(props.location.search);
+		const {page, category} = queryParams
+
+		if (page) {
+			let _page = parseInt(page)
+			setPage(_page)
+		}
+		if (category) {
+			setCategory(category)
+		}
+
+		_getPostes({page, limit: 10, category})
 	}, [])
 
 	const onCategoryChange = (category) => {
+		props.history.push(generalUrlParams({page: 1, category}))
 		setPage(1)
 		setCategory(category)
 		_getPostes({page: 1, limit: 10, category})
 	}
 
 	const onPaginationChange = (event, page) => {
+		props.history.push(generalUrlParams({page, category}))
 		setPage(page)
 		_getPostes({page, limit: 10, category})
 	}

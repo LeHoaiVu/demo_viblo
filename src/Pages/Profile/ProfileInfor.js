@@ -19,11 +19,11 @@ const validationSchema = yup.object({
         .required('Bạn cần phải nhập tên'),
     birthday: yup.date()
         .required('Bạn phải nhập ngày sinh')
-        .test("age", "Bạn phải trên 18 tuổi", function(birthday) {
-          const cutoff = new Date();
-          cutoff.setFullYear(cutoff.getFullYear() - 18);      
-          return birthday <= cutoff;
-        }),
+        // .test("age", "Bạn phải trên 18 tuổi", function(birthday) {
+        //   const cutoff = new Date();
+        //   cutoff.setFullYear(cutoff.getFullYear() - 18);      
+        //   return birthday <= cutoff;
+        // }),
 
 });
 
@@ -66,20 +66,22 @@ const ProfileInfor = (props) => {
     const classes = useStyles();
     const validate = values => {
         const errors = {}
-    
+        
         if(!values.gender || values.gender==='none'){
-          errors.gender='Bạn phải nhập giới tính';
+            errors.gender='Bạn phải nhập giới tính';
         }
-    
+        
         return errors;
     }
 
+    console.log(`props`, props)
+
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName:'',
-            birthday: '',
-            gender: ''
+            firstName: props.auth.user.firstName,
+            lastName: props.auth.user.lastName,
+            birthday: props.auth.user.birthday ? props.auth.user.birthday.split('T')[0] : '',
+            gender: props.auth.user.gender ? 'True' : 'False'
         },
         validationSchema: validationSchema,
 
@@ -100,14 +102,7 @@ const ProfileInfor = (props) => {
             if (res.data.success) {
                 // Action update user into redux store
                 let payload = JSON.parse(JSON.stringify(props.auth));
-                
-                for (let i=0;i<payload.user.length;i++) {
-                    if (payload.user[i].id === res.payload.id) {
-                        payload.user[i] = res.payload;
-                        break;
-                    }
-                }
-                window.location.reload();
+                payload.user = res.data.payload
                 props.setAuth(payload);
             }
 

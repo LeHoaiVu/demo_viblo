@@ -18,6 +18,7 @@ import ProfileEmail from '../Pages/Profile/ProfileEmail';
 import SecurityPassword from '../Pages/Security/SecurityPassword';
 import Header from '../component/Header';
 import DetailedPost from '../Pages/Post/DetailedPost';
+import DetailedUser from '../Pages/User/DetailedUser';
 
 function mapStateToProps(state) {
     return {
@@ -108,11 +109,11 @@ class MainContainer extends Component {
                 {
                     isReady
                         ? (
-                            <div>
-                                <Header {...this.props}/>
+                            <div>                  
                                 <Switch>
+                                    <Route path='/' exact render={(props) => <Home {...props} {...this.props} /> } />   
                                     <Route path='/forgot-password' exact render={ForgotPassword}/>
-                                    <Route path='/home' exact render={(props) => auth?.logged ? <Home {...props} {...this.props} /> : <Redirect to="/login" />} />
+                                    <Route path='/home' exact render={(props) => auth?.logged ?  <Home {...props} {...this.props} /> : <Redirect to="/login" />} />
                                     <Route path='/login' exact render={(props) => <Login {...props} {...this.props} />} />
                                     <Route path='/register' exact render={(props) => <Register {...props} {...this.props} />} />
                                     <Route path='/profile' exact render={(props) => auth?.logged ? <Profile {...props} {...this.props} /> : <Redirect to="/login" />} />
@@ -120,8 +121,10 @@ class MainContainer extends Component {
                                     <Route path='/profile-contact' exact render={(props) => auth?.logged ? <ProfileContact {...props} {...this.props} /> : <Redirect to="/login" />} />
                                     <Route path='/profile-email' exact render={(props) => auth?.logged ? <ProfileEmail {...props} {...this.props} /> : <Redirect to="/login" />} />
                                     <Route path='/security-password' exact render={(props) => auth?.logged ? <SecurityPassword {...props} {...this.props} /> : <Redirect to="/login" />} />
-                                    <Route path='/p/:slug' render={(props) => auth?.logged ? <DetailedPost {...props} {...this.props} /> : <Redirect to="/login" />}/>
+                                    <Route path='/p/:slug' render={(props) => <DetailedPost {...props} {...this.props} />}/>
+                                    <Route path='/u/:_id' render={(props) => <DetailedUser {...props} {...this.props} />}/>
                                 </Switch>
+                                
                             </div>
                         )
                         : 

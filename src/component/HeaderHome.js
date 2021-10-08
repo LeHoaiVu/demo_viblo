@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import { Box, IconButton, Link, Divider, Menu, ListItemIcon, ListItemText, MenuItem, InputBase } from '@material-ui/core';
+import { Box, IconButton, Divider, Menu, ListItemIcon, ListItemText, MenuItem, InputBase } from '@material-ui/core';
 import { makeStyles, withStyles, alpha } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { USER_TOKEN } from '../utils/localStorage';
@@ -19,6 +19,7 @@ import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import HistoryIcon from '@material-ui/icons/History';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 300;
 
@@ -201,12 +202,19 @@ const HeaderHome = ({props}) => {
     const [anchorElHome, setAnchorElHome] = useState(null);
 
     const { auth } = props;
-    const checkLogged = !auth.logged;
-
+    let checkLogged = !auth.logged;
+    
     
     const handleLogout = () => {
         USER_TOKEN.delete();
-        window.location.replace('/');
+        let payload = {
+            user: null,
+            token: null,
+            logged: false,
+        }
+        props.setAuth(payload);
+        history.push('/')
+        
     }
     
     const handleOpenMenuHome = (e) => {
@@ -227,32 +235,36 @@ const HeaderHome = ({props}) => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Box display='flex' flexGrow={1}>
-                        <Link href='/home'>
+                        <Link to='/'>
                             <img 
                                 alt='logoheader-img'
                                 className={classes.logoHeader}
-                                src="images/logo.png"
+                                src="../images/logo.png"
                                 >
                             </img>
                         </Link>
                     </Box>
                     <>
-                        <Button 
-                            variant='contained'
-                            color='primary'
-                            className={classes.btnHeader}
-                            href='./login'
-                        >
-                            SIGN IN
-                        </Button>
-                        <Button 
-                            variant='contained'
-                            color='primary'
-                            className={classes.btnHeader}
-                            href='./register'
-                        >
-                            SIGN UP
-                        </Button>
+                        <Link to='./login' style={{textDecoration: 'none'}}>
+                            <Button 
+                                variant='contained'
+                                color='primary'
+                                className={classes.btnHeader}
+                               
+                            >
+                                SIGN IN
+                            </Button>
+                        </Link>
+                        <Link to='./register' style={{textDecoration: 'none'}}>
+                            <Button 
+                                variant='contained'
+                                color='primary'
+                                className={classes.btnHeader}
+                                
+                            >
+                                SIGN UP
+                            </Button>
+                        </Link>
                     </>
                 </Toolbar>
             </AppBar>
@@ -261,7 +273,7 @@ const HeaderHome = ({props}) => {
                     <AppBar position="fixed" className={classes.appBar}>
                         <Toolbar>
                             <Box display='flex' flexGrow={1}>
-                                <Link href='/home'>
+                                <Link to='/home'>
                                     <img 
                                         alt='logoheader-img'
                                         className={classes.logoHeader}

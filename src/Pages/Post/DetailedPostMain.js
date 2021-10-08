@@ -1,10 +1,11 @@
-import { Avatar, Box, Container, CssBaseline, Grid, Link, makeStyles, Typography, Button, Tooltip, Toolbar, IconButton, Divider } from '@material-ui/core'
+import { Avatar, Box, Container, CssBaseline, Grid, makeStyles, Typography, Button, Tooltip, Toolbar, IconButton, Divider } from '@material-ui/core'
 import React from 'react';
 import PropTypes from 'prop-types';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import CommentIcon from '@material-ui/icons/Comment';
 import dateFormat from "dateformat";
+import { Link } from 'react-router-dom';
 
 
 const timeCalculate = (past, now) =>{
@@ -109,10 +110,12 @@ function DetailedPostMain(props) {
                     <Grid item xs={12} md={8}>
                         <Box p={3} style={{ display: "flex"}}>
                             <Box display="flex" style={{ flexGrow: 1}}>
-                                <Avatar src={post.user.fullName} style={{height: 50, width: 50}}/>                                 
+								<Link to={`/u/${post.user._id}`} style={{textDecoration: 'none'}}>
+                                	<Avatar src={post.user.fullName} style={{height: 50, width: 50}}/>  
+								</Link>                               
                                 <Box style={{marginLeft: 5}}>
                                     <Box display="flex">
-                                        <Link>
+                                        <Link to={`/u/${post.user._id}`} style={{textDecoration: 'none'}}>
                                             {post.user.fullName}
                                         </Link>
                                         <Typography style={{color: "#9eadb6", fontSize: 14, margin: "0px 5px"}}>{`@${post.user.email.replace(/@.*$/,"")}`}</Typography>

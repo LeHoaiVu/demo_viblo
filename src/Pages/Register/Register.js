@@ -4,8 +4,11 @@ import { Avatar, Grid, Paper, Typography } from "@material-ui/core";
 import RegisterForm from "./RegisterForm";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
+import Header from "../../component/Header";
 
 const Register = (props) => {
+
+    
 
     const history = useHistory();
 
@@ -19,7 +22,7 @@ const Register = (props) => {
             password: formData.password
         })
         if (res.data.success){
-            alert('Đăng ký thành công');
+            
             history.push("/login");
         }
         else{
@@ -30,33 +33,37 @@ const Register = (props) => {
     }
 
     return(
-        <div style={{
-            marginTop: '150px',
-        }}>
-            <Grid>
-                <Paper elevation={10}
-                    style={{
-                        padding: 20,
-                        height: '60vh',
-                        width: 400,
-                        margin: '20px auto',  
-                    }}
-                >
-                    <Grid align='center'>
-                        <Avatar
-                            style={{
-                                marginBottom: 40,
-                                backgroundColor:'#1bbd7e'
-                            }}
-                        >
-                            <LockOutlinedIcon/>
-                        </Avatar>
-                        <Typography variant='h6'>Đăng Ký</Typography>
-                    </Grid>
-                        <RegisterForm onSubmit={handleSubmit} />
-                </Paper>
-            </Grid>
-        </div>
+        <>
+            <Header/>
+            <div style={{
+                marginTop: '120px',
+            }}>
+                <Grid>
+                    <Paper elevation={10}
+                        style={{
+                            padding: 20,
+                            height: '75vh',
+                            width: 400,
+                            margin: '15px auto',
+                            borderRadius: '10px'  
+                        }}
+                    >
+                        <Grid align='center'>
+                            <Avatar
+                                style={{
+                                    marginBottom: 20,
+                                    backgroundColor:'#1bbd7e'
+                                }}
+                            >
+                                <LockOutlinedIcon/>
+                            </Avatar>
+                            <Typography variant='h6'>Đăng Ký</Typography>
+                        </Grid>
+                            <RegisterForm onSubmit={handleSubmit} />
+                    </Paper>
+                </Grid>
+            </div>
+        </>
     )
 }
 
