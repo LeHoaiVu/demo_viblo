@@ -1,11 +1,7 @@
 import React from 'react'
 
 function SecurityPassword() {
-    return (
-        <div>
-            
-        </div>
-    )
+    return <div></div>
 }
 
 export default SecurityPassword

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import Button from '@material-ui/core/Button';
-import { Grid } from '@material-ui/core';
-
-
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import Button from '@material-ui/core/Button'
+import { Grid } from '@material-ui/core'
 
 export default class ForgotPasswordForm extends Component {
     constructor(props) {
@@ -17,31 +15,32 @@ export default class ForgotPasswordForm extends Component {
     }
 
     handleChange = (event) => {
-        const { formData } = this.state;
-        formData[event.target.name] = event.target.value;
-        this.setState({ formData });
-        console.log(`formData`, formData);
+        const { formData } = this.state
+        formData[event.target.name] = event.target.value
+        this.setState({ formData })
+        console.log(`Password updated`, formData)
     }
 
     handleSubmit = () => {
-        const {onSubmit} = this.props
+        const { onSubmit } = this.props
 
         this.setState({ typed: true }, () => {
-            this.setState({typed: false})
+            this.setState({ typed: false })
             onSubmit(this.state.formData)
-        });
+        })
     }
 
     render() {
-        const { formData, typed } = this.state;    
+        const { formData, typed } = this.state
 
         return (
-            <Grid align='center'>
+            <Grid align="center">
                 <ValidatorForm
                     ref="form"
                     onSubmit={this.handleSubmit}
                     style={{
-                        marginTop: 50
+                        marginTop: 15,
+                        width: 300,
                     }}
                 >
                     <TextValidator
@@ -60,16 +59,13 @@ export default class ForgotPasswordForm extends Component {
                         type="submit"
                         disabled={typed}
                         style={{
-                            marginTop: 20,
+                            margin: '20px 0px 20px 0px',
                         }}
                     >
-                        {
-                            (typed && 'Send me email')
-                            || (!typed && 'Send me email')
-                        }
+                        {(typed && 'Send email') || (!typed && 'Send email')}
                     </Button>
                 </ValidatorForm>
             </Grid>
-        );
-    }   
+        )
+    }
 }

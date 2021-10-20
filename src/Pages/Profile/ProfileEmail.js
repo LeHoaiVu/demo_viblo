@@ -1,27 +1,28 @@
-import React from 'react';
-import { Box, Button, Container, Divider, InputLabel, Paper, TextField, Typography } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import * as yup from 'yup';
-import { useFormik } from 'formik';
-import HeaderProfile from '../../component/HeaderProfile';
-
+import React from 'react'
+import { Box, Button, Container, Divider, InputLabel, Paper, TextField, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import * as yup from 'yup'
+import { useFormik } from 'formik'
+import HeaderProfile from '../../component/HeaderProfile'
 
 const useStyles = makeStyles((theme) => ({
     content: {
-		flexGrow: 1,
-		height: '100vh',
-		overflow: 'auto',
-		marginLeft: '300px'
-	},
-  	appBarSpacer: theme.mixins.toolbar,
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+        marginLeft: '300px',
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: '50px',
+        },
+    },
+    appBarSpacer: theme.mixins.toolbar,
     container: {
-		paddingTop: theme.spacing(4),
-		paddingBottom: theme.spacing(4),
-		display: 'flex',
-		flexDirection: 'column',
-	},
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+        display: 'flex',
+        flexDirection: 'column',
+    },
     email: {
-        width: '350px',
         marginBottom: '15px',
     },
     boxItems: {
@@ -33,15 +34,24 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '13px',
         marginRight: '15px',
         padding: '5px',
+        [theme.breakpoints.down('sm')]: {
+            marginRight: '10px',
+        },
     },
     mainEmail: {
         marginRight: '15px',
         fontSize: '13px',
         backgroundColor: '#40ff00',
         inlineSize: 'max-content',
-        color: 'white',
+        color: 'black',
         borderRadius: '8px',
         padding: '5px',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '10px',
+            whiteSpace: 'nowrap',
+            height: '25px',
+            marginRight: '5px',
+        },
     },
     boxItemVerified: {
         border: '1px solid #124d00',
@@ -52,19 +62,37 @@ const useStyles = makeStyles((theme) => ({
         color: '#124d00',
         borderRadius: '8px',
         padding: '5px',
-    }
-}));
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '10px',
+            whiteSpace: 'nowrap',
+            height: '25px',
+        },
+    },
+    btnEmail: {
+        marginTop: 50,
+        [theme.breakpoints.down('sm')]: {
+            marginTop: 20,
+        },
+    },
+    profileEmailTittle: {
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 18,
+            fontWeight: 'bold',
+        },
+    },
+    profileEmailSubtittle: {
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 13,
+        },
+    },
+}))
 
 const validationSchema = yup.object({
-    emails: yup
-        .string('Nhập email cần thêm')
-        .email('Email không hợp lệ')
-        .required('Bạn cần nhập email thêm'),
-});
+    emails: yup.string('Nhập email cần thêm').email('Email không hợp lệ').required('Bạn cần nhập email thêm'),
+})
 
 function ProfileEmail(props) {
-
-    const classes = useStyles();
+    const classes = useStyles()
 
     const formik = useFormik({
         initialValues: {
@@ -73,11 +101,10 @@ function ProfileEmail(props) {
         validationSchema: validationSchema,
 
         onSubmit: (values) => {
-
-            console.log(`values`, values)
+            console.log(`Information was updated`, values)
 
             // values['gender'] = (values['gender'].toLowerCase() === 'true');
-            
+
             // const res = await axios({
             //     method: 'put',
             //     url: 'https://haloha-backend.herokuapp.com/api/users',
@@ -89,7 +116,7 @@ function ProfileEmail(props) {
             // if (res.data.success) {
             //     // Action update user into redux store
             //     let payload = JSON.parse(JSON.stringify(props.auth));
-                
+
             //     for (let i=0;i<payload.user.length;i++) {
             //         if (payload.user[i].id === res.payload.id) {
             //             payload.user[i] = res.payload;
@@ -99,65 +126,64 @@ function ProfileEmail(props) {
             //     window.location.reload();
             //     props.setAuth(payload);
             // }
-
         },
-
-    });
+    })
 
     return (
         <>
-            <HeaderProfile props={props}/>
+            <HeaderProfile props={props} />
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                    <Container maxWidth="lg" className={classes.container}>
-                        <Paper variant="outlined">
-                            <Box style={{margin: 20}}>
-                                <Typography variant='h5' gutterBottom>Emails</Typography>
-                                <Typography variant='subtitle2'>Email dự phòng của bạn cũng sẽ nhận được những thông báo liên quan đến bảo mật tài khoản và cũng được sử dụng để đặt lại mật khẩu</Typography>
-                            </Box>
-                            <div style={{margin: 20}}>
-                                <form onSubmit={formik.handleSubmit}>
-                                    <Box 
-                                        className={classes.boxItems}    
-                                    >
-                                        <Box
-                                            className={classes.boxItemEmail}
-                                        >
-                                            {props.auth.user.email}
-                                        </Box>
-                                        <Box  
-                                            className={classes.mainEmail} 
-                                        >
-                                            Email chính
-                                        </Box>
-                                        <Box  
-                                            className={classes.boxItemVerified} 
-                                        >
-                                            Đã xác minh
-                                        </Box>
-                                    </Box>
-                                    <Divider style={{margin: 20}}/>
-                                    <InputLabel style={{marginTop: 15, marginBottom: 10, fontSize: 12}}>Thêm địa chỉ email mới</InputLabel>
-                                    <TextField
-                                        className={classes.email}
-                                        variant="outlined"
-                                        id="emails"
-                                        name="emails"
-                                        label="Email"
-                                        placeholder="you@your.domain"
-                                        value={formik.values.emails}
-                                        onChange={formik.handleChange}
-                                        error={formik.touched.emails && Boolean(formik.errors.emails)}
-                                        helperText={formik.touched.emails && formik.errors.emails}
-                                    />
-                            
-                                    <Button color="primary" variant="contained" fullWidth type="submit" style={{marginTop: 50}}>
-                                        Cập Nhật
-                                    </Button>
-                                </form>
-                            </div>
-                        </Paper>
-                    </Container>
+                <Container maxWidth="lg" className={classes.container}>
+                    <Paper variant="outlined">
+                        <Box style={{ margin: 20 }}>
+                            <Typography variant="h5" gutterBottom className={classes.profileEmailTittle}>
+                                Emails
+                            </Typography>
+                            <Typography variant="subtitle2" className={classes.profileEmailSubtittle}>
+                                Email dự phòng của bạn cũng sẽ nhận được những thông báo liên quan đến bảo mật tài khoản
+                                và cũng được sử dụng để đặt lại mật khẩu
+                            </Typography>
+                        </Box>
+                        <div style={{ margin: 20 }}>
+                            <form onSubmit={formik.handleSubmit}>
+                                <Box className={classes.boxItems}>
+                                    <Box className={classes.boxItemEmail}>{props.auth.user.email}</Box>
+                                    <Box className={classes.mainEmail}>Email chính</Box>
+                                    <Box className={classes.boxItemVerified}>Đã xác minh</Box>
+                                </Box>
+                                <Divider style={{ margin: 20 }} />
+                                <InputLabel style={{ marginTop: 15, marginBottom: 10, fontSize: 12 }}>
+                                    Thêm địa chỉ email mới
+                                </InputLabel>
+                                <TextField
+                                    className={classes.email}
+                                    variant="outlined"
+                                    id="emails"
+                                    name="emails"
+                                    label="Email"
+                                    placeholder="you@your.domain"
+                                    value={formik.values.emails}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.emails && Boolean(formik.errors.emails)}
+                                    helperText={formik.touched.emails && formik.errors.emails}
+                                    fullWidth
+                                    size="small"
+                                />
+
+                                <Button
+                                    color="primary"
+                                    variant="contained"
+                                    fullWidth
+                                    type="submit"
+                                    className={classes.btnEmail}
+                                >
+                                    Cập Nhật
+                                </Button>
+                            </form>
+                        </div>
+                    </Paper>
+                </Container>
             </main>
         </>
     )
