@@ -24,7 +24,6 @@ export default class LoginForm extends Component {
 
     handleSubmit = () => {
         const { onSubmit } = this.props
-
         this.setState({ submitted: true }, () => {
             this.setState({ submitted: false })
             onSubmit(this.state.formData)
@@ -62,7 +61,7 @@ export default class LoginForm extends Component {
                         name="email"
                         value={formData.email}
                         validators={['required', 'isEmail']}
-                        errorMessages={['Bạn phải nhập email', 'Đây không phải email']}
+                        errorMessages={['You have to input email', 'This is not an email']}
                         fullWidth
                     />
                     {/* <TextField 
@@ -81,7 +80,7 @@ export default class LoginForm extends Component {
                         type="password"
                         value={formData.password}
                         validators={['required', 'minStringLength: 8']}
-                        errorMessages={['Bạn phải nhập mật khẩu', 'Bạn phải nhập tối thiểu 8 ký tự']}
+                        errorMessages={['You have to input password', 'You have to input at least 8 characters']}
                         className="password"
                         fullWidth
                     />
@@ -95,7 +94,7 @@ export default class LoginForm extends Component {
                             marginTop: 15,
                         }}
                     >
-                        {(submitted && 'Đăng Nhập Thành Công') || (!submitted && 'Đăng Nhập')}
+                        {(submitted && 'Login success') || (!submitted && 'Login')}
                     </Button>
                 </ValidatorForm>
             </Grid>

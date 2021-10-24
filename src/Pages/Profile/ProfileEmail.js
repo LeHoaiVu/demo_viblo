@@ -141,20 +141,19 @@ function ProfileEmail(props) {
                                 Emails
                             </Typography>
                             <Typography variant="subtitle2" className={classes.profileEmailSubtittle}>
-                                Email dự phòng của bạn cũng sẽ nhận được những thông báo liên quan đến bảo mật tài khoản
-                                và cũng được sử dụng để đặt lại mật khẩu
+                                Your backup email address will be used as an additional destination for security-relevant account notifications and can also be used for password resets.
                             </Typography>
                         </Box>
                         <div style={{ margin: 20 }}>
                             <form onSubmit={formik.handleSubmit}>
                                 <Box className={classes.boxItems}>
                                     <Box className={classes.boxItemEmail}>{props.auth.user.email}</Box>
-                                    <Box className={classes.mainEmail}>Email chính</Box>
-                                    <Box className={classes.boxItemVerified}>Đã xác minh</Box>
+                                    <Box className={classes.mainEmail}>Official Email</Box>
+                                    <Box className={classes.boxItemVerified}>Verified</Box>
                                 </Box>
                                 <Divider style={{ margin: 20 }} />
                                 <InputLabel style={{ marginTop: 15, marginBottom: 10, fontSize: 12 }}>
-                                    Thêm địa chỉ email mới
+                                    Add new email
                                 </InputLabel>
                                 <TextField
                                     className={classes.email}
@@ -178,7 +177,7 @@ function ProfileEmail(props) {
                                     type="submit"
                                     className={classes.btnEmail}
                                 >
-                                    Cập Nhật
+                                    Update
                                 </Button>
                             </form>
                         </div>

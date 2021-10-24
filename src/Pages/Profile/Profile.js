@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         },
         marginBottom: 15,
         [theme.breakpoints.down('sm')]: {
-            marginBottom: 1,
+            margin: '0px auto',
         },
     },
     paperItem: {
@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             width: 250,
             height: 105,
+            margin: '8px auto',
         },
     },
     logo: {
@@ -171,12 +172,12 @@ function Profile(props) {
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant="h5" className={classes.textWelcome}>
-                                Chào mừng, {props.auth.user.lastName}
+                                Welcome, {props.auth.user.lastName}
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant="subtitle1" className={classes.textInfor}>
-                                Quản lý thông tin cá nhân của bạn và bảo mật với Viblo Accounts
+                                Manage your profile information and security with Viblo Accounts
                             </Typography>
                         </Grid>
                     </Grid>
@@ -197,7 +198,7 @@ function Profile(props) {
                                         variant="h6"
                                         className={classes.textItem}
                                     >
-                                        Thông tin của tôi
+                                        My Profile
                                     </Typography>
                                 </Link>
                             </Box>
@@ -210,7 +211,7 @@ function Profile(props) {
                                 >
                                     <img alt="password-logo" src="images/password.png" className={classes.logo}></img>
                                     <Typography className={classes.textItem} variant="h6">
-                                        Mật Khẩu
+                                        Password
                                     </Typography>
                                 </Link>
                             </Box>
@@ -227,7 +228,7 @@ function Profile(props) {
                                         className={classes.logo}
                                     ></img>
                                     <Typography className={classes.textItem} variant="h6">
-                                        Tài khoản được liên kết
+                                        Connected Accounts
                                     </Typography>
                                 </Link>
                             </Box>
@@ -242,7 +243,7 @@ function Profile(props) {
                                 >
                                     <img alt="key-logo" src="images/key.png" className={classes.logo}></img>
                                     <Typography className={classes.textItem} variant="h6">
-                                        Mã bảo mật truy cập
+                                       Access Tokens
                                     </Typography>
                                 </Link>
                             </Box>
@@ -255,7 +256,7 @@ function Profile(props) {
                                 >
                                     <img alt="3d-logo" src="images/3d.png" className={classes.logo}></img>
                                     <Typography className={classes.textItem} variant="h6">
-                                        Ứng dụng OAuth
+                                        OAuth Apps
                                     </Typography>
                                 </Link>
                             </Box>
@@ -263,7 +264,7 @@ function Profile(props) {
                     </Box>
                     <Box style={{ marginTop: 15 }}>
                         <Typography variant="h5" className={classes.textWelcome}>
-                            Dịch vụ Viblo
+                            Viblo Services
                         </Typography>
                     </Box>
                     <Box>

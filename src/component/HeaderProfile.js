@@ -507,7 +507,7 @@ const HeaderProfile = ({ props }) => {
                                                     }}
                                                     variant="subtitle2"
                                                 >
-                                                    Đăng xuất
+                                                    Sign Out
                                                 </Typography>
                                             </Link>
                                         </Box>
@@ -534,7 +534,7 @@ const HeaderProfile = ({ props }) => {
                                                 className={classes.accordionLink}
                                                 style={{ textDecoration: 'none' }}
                                             >
-                                                Trang Chủ
+                                                Home
                                             </Link>
                                         </Box>
                                     </AccordionSummary>
@@ -546,7 +546,7 @@ const HeaderProfile = ({ props }) => {
                                         id="panel1a-header"
                                     >
                                         <AccountBoxIcon style={{ marginRight: 10 }} />
-                                        <Typography className={classes.heading}>Thông Tin Của Tôi</Typography>
+                                        <Typography className={classes.heading}>My Profile</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <List component="div" disablePadding>
@@ -554,7 +554,7 @@ const HeaderProfile = ({ props }) => {
                                                 <AccountBoxIcon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile-infor" style={{ textDecoration: 'none' }}>
-                                                        Thông Tin Cá Nhân
+                                                        Personal Infor
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -562,7 +562,7 @@ const HeaderProfile = ({ props }) => {
                                                 <RecentActorsIcon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile-contact" style={{ textDecoration: 'none' }}>
-                                                        Thông Tin Liên Hệ
+                                                        Contact Infor
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -570,7 +570,7 @@ const HeaderProfile = ({ props }) => {
                                                 <MailOutlineIcon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile-email" style={{ textDecoration: 'none' }}>
-                                                        Email
+                                                        Emails
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -584,7 +584,7 @@ const HeaderProfile = ({ props }) => {
                                         id="panel1a-header"
                                     >
                                         <SecurityIcon style={{ marginRight: 10 }} />
-                                        <Typography className={classes.heading}>Bảo Mật</Typography>
+                                        <Typography className={classes.heading}>Security</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <List component="div" disablePadding>
@@ -592,7 +592,7 @@ const HeaderProfile = ({ props }) => {
                                                 <VpnKeyIcon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                                        Mật Khẩu
+                                                        Password
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -600,7 +600,7 @@ const HeaderProfile = ({ props }) => {
                                                 <AccountTreeIcon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                                        Tài Khoản Liên Kết
+                                                        Connected Account
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -614,7 +614,7 @@ const HeaderProfile = ({ props }) => {
                                         id="panel1a-header"
                                     >
                                         <SportsHandballIcon style={{ marginRight: 10 }} />
-                                        <Typography className={classes.heading}>Cài Đặt Nhà Phát Triển</Typography>
+                                        <Typography className={classes.heading}>Developer Setting</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <List component="div" disablePadding>
@@ -622,7 +622,7 @@ const HeaderProfile = ({ props }) => {
                                                 <AppsIcon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                                        Ứng dụng OAuth
+                                                        OAuth Apps
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -630,7 +630,7 @@ const HeaderProfile = ({ props }) => {
                                                 <SportsHandballIcon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                                        Mã Bảo Mật Truy Cập Cá Nhân
+                                                        Personal Access Tokens
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -638,7 +638,7 @@ const HeaderProfile = ({ props }) => {
                                                 <Brightness7Icon style={{ marginRight: 10 }} />
                                                 <Box>
                                                     <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                                        Ứng dụng OAuth được ủy quyền
+                                                        Authorized OAuth Apps
                                                     </Link>
                                                 </Box>
                                             </ListItem>
@@ -694,7 +694,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile-infor"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Thông Tin Cá Nhân
+                                                                        Personal Info
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>
@@ -705,7 +705,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile-contact"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Thông Tin Liên Hệ
+                                                                        Contact Info
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>
@@ -716,7 +716,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile-email"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Email
+                                                                        Emails
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>
@@ -758,7 +758,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Mật Khẩu
+                                                                        Password
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>
@@ -769,7 +769,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Tài Khoản Liên Kết
+                                                                        Connected Accounts
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>
@@ -811,7 +811,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Ứng dụng OAuth
+                                                                        OAuth Applications
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>
@@ -822,7 +822,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Mã Bảo Mật Truy Cập Cá Nhân
+                                                                        Personal Access Tokens
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>
@@ -833,7 +833,7 @@ const HeaderProfile = ({ props }) => {
                                                                         to="/profile"
                                                                         className={classes.itemTabMobile}
                                                                     >
-                                                                        Ứng dụng OAuth được ủy quyền
+                                                                        Authorized OAuth Apps
                                                                     </Link>
                                                                 </Box>
                                                             </ListItem>

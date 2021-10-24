@@ -3,6 +3,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
     root: {
+        marginTop: 100,
         [theme.breakpoints.down('sm')]: {
             margin: '0px auto',
         },
@@ -29,20 +30,20 @@ function UserSideBar(props) {
             <Grid item>
                 <Box className={classes.sidebarAboutBox}>
                     <Typography variant="subtitle1" gutterBottom className={classes.sidebarSection}>
-                        {`Tổng số bài viết: ${postOfUser.totalDocs}`}
+                        {`Number of the post: ${postOfUser.totalDocs}`}
                     </Typography>
                     <Typography variant="subtitle1" gutterBottom className={classes.sidebarSection}>
-                        {`Lượt view: ${postOfUser.docs.reduce((total, currValue) => {
+                        {`Views: ${postOfUser.docs.reduce((total, currValue) => {
                             return total + currValue.views_count
                         }, 0)}`}
                     </Typography>
                     <Typography variant="subtitle1" gutterBottom className={classes.sidebarSection}>
-                        {`Lượt likes: ${postOfUser.docs.reduce((total, currValue) => {
+                        {`Likes: ${postOfUser.docs.reduce((total, currValue) => {
                             return total + currValue.likes_count
                         }, 0)}`}
                     </Typography>
                     <Typography variant="subtitle1" gutterBottom className={classes.sidebarSection}>
-                        {`Lượt comments: ${postOfUser.docs.reduce((total, currValue) => {
+                        {`Comments: ${postOfUser.docs.reduce((total, currValue) => {
                             return total + currValue.comments_count
                         }, 0)}`}
                     </Typography>

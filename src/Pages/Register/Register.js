@@ -54,7 +54,7 @@ const Register = (props) => {
                             >
                                 <LockOutlinedIcon />
                             </Avatar>
-                            <Typography variant="h6">Đăng Ký</Typography>
+                            <Typography variant="h6">Register</Typography>
                         </Grid>
                         <RegisterForm onSubmit={handleSubmit} />
                     </Paper>

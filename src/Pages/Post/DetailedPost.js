@@ -48,6 +48,7 @@ function DetailedPost(props) {
         let res = await getDetailedPost(slug_post)
         if (res.success) {
             setDetailedPost(res.payload)
+            console.log(`post`, res.payload)
         } else {
             console.log(` get detailedpost res.error`, res.error)
         }

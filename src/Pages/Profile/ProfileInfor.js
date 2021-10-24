@@ -9,14 +9,14 @@ import HeaderProfile from '../../component/HeaderProfile'
 
 const validationSchema = yup.object({
     firstName: yup
-        .string('Nhập họ của bạn')
-        .max(15, 'Tên không được dài quá 15 ký tự')
-        .required('Bạn cần phải nhập họ'),
+        .string('Input your first name')
+        .max(15, 'Number of characters can not be more than 15')
+        .required('You have to input first name'),
     lastName: yup
-        .string('Nhập tên của bạn')
-        .max(15, 'Tên không được dài quá 15 ký tự')
-        .required('Bạn cần phải nhập tên'),
-    birthday: yup.date().required('Bạn phải nhập ngày sinh'),
+        .string('Input your last name')
+        .max(15, 'Number of characters can not be more than 15')
+        .required('You have to input last name'),
+    birthday: yup.date().required('You have to input your birthday'),
     // .test("age", "Bạn phải trên 18 tuổi", function(birthday) {
     //   const cutoff = new Date();
     //   cutoff.setFullYear(cutoff.getFullYear() - 18);
@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     btnUpdateProfile: {
+        marginTop: 20,
         [theme.breakpoints.down('sm')]: {
             marginTop: 20,
         },
@@ -95,11 +96,12 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileInfor = (props) => {
     const classes = useStyles()
+ 
     const validate = (values) => {
         const errors = {}
 
-        if (!values.gender || values.gender === 'none') {
-            errors.gender = 'Bạn phải nhập giới tính'
+        if (values.gender === 'none') {
+            errors.gender = 'You have to input your gender'
         }
 
         return errors
@@ -220,6 +222,19 @@ const ProfileInfor = (props) => {
                                             }}
                                             size="small"
                                         />
+                                        {formik.errors.gender ? (
+                                            <div
+                                                style={{
+                                                    fontSize: 12.5,
+                                                    marginTop: '5px',
+                                                    marginLeft: '12px',
+                                                    color: 'red',
+                                                    visibility: 'hidden',
+                                                }}
+                                            >
+                                                {'error in gender. please check it'}
+                                            </div>
+                                        ) : null}
                                     </Grid>
                                     <Grid item xs={6}>
                                         <CustomSelect
@@ -250,7 +265,7 @@ const ProfileInfor = (props) => {
                                     type="submit"
                                     className={classes.btnUpdateProfile}
                                 >
-                                    Cập Nhật
+                                    Update
                                 </Button>
                             </form>
                         </div>

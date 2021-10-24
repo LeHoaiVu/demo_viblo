@@ -32,7 +32,6 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, ...ot
     const history = useHistory()
     const theme = useTheme()
     const mobileMatch = useMediaQuery(theme.breakpoints.up('sm'))
-    console.log(`mobilematch`, mobileMatch)
     return (
         <div
             style={{
@@ -60,12 +59,12 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, ...ot
                         </Box>
                         <Divider style={{ marginBottom: '20px' }} />
                         <Grid container spacing={2} style={{ marginBottom: '10px' }}>
-                            {postes === null && <Typography className={classes.tex}>Không có bài đăng nào</Typography>}
+                            {postes === null && <Typography className={classes.tex}>No post here</Typography>}
                             {postes?.docs?.length > 0 &&
                                 postes.docs.map((post, index) => (
                                     <Grid key={index} item xs={12}>
                                         {mobileMatch ? (
-                                            <Paper elevation={6} className={classes.postItem}>
+                                            <Paper elevation={2} className={classes.postItem}>
                                                 <Box display="flex" flexGrow={1}>
                                                     <Grid container direction="column">
                                                         <Link
@@ -143,7 +142,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, ...ot
                                                             </Grid>
                                                             <Grid item xs={6} style={{ margin: '9px 0px 10px 0px' }}>
                                                                 <Typography
-                                                                    variant="subtittle2"
+                                                                    variant="subtitle2"
                                                                     className={classes.dateTimePost}
                                                                 >
                                                                     {dateFormat(post.createdAt)}
@@ -227,7 +226,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, ...ot
                                                 </>
                                             </Paper>
                                         ) : (
-                                            <Paper elevation={6} className={classes.postItem}>
+                                            <Paper elevation={2} className={classes.postItem}>
                                                 <Link
                                                     to={`/p/${post.slug}`}
                                                     style={{
@@ -298,7 +297,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, ...ot
                                                                     </Typography>
                                                                 </Link>
                                                                 <Typography
-                                                                    variant="subtittle2"
+                                                                    variant="subtitle2"
                                                                     className={classes.dateTimePost}
                                                                 >
                                                                     {timeCalculate(post.createdAt)}
@@ -482,9 +481,11 @@ const useStyles = makeStyles((theme) => ({
             width: 780,
         },
         [theme.breakpoints.down('md')]: {
+            margin: '0px auto',
             width: 660,
         },
         [theme.breakpoints.down('sm')]: {
+            margin: '0px auto',
             width: 350,
             flexDirection: 'column',
         },

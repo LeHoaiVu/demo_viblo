@@ -29,7 +29,7 @@ import { timeCalculate } from '../Post/DetailedPostMain'
 
 const userTabs = [
     {
-        label: 'Bài viết',
+        label: 'Posts',
         content: '',
     },
     {
@@ -37,27 +37,27 @@ const userTabs = [
         content: '',
     },
     {
-        label: 'Câu hỏi',
+        label: 'Quesions',
         content: '',
     },
     {
-        label: 'Câu trả lời',
+        label: 'Answers',
         content: '',
     },
     {
-        label: 'Bookmark',
+        label: 'Bookmarks',
         content: '',
     },
     {
-        label: 'Đang theo dõi',
+        label: 'Followings',
         content: '',
     },
     {
-        label: 'Người theo dõi',
+        label: 'Followers',
         content: '',
     },
     {
-        label: 'Thẻ',
+        label: 'Tags',
         content: '',
     },
     {
@@ -65,7 +65,7 @@ const userTabs = [
         content: '',
     },
     {
-        label: 'Liên hệ',
+        label: 'Communications',
         content: '',
     },
 ]
@@ -232,7 +232,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, postO
     const classes = useStyles()
     const theme = useTheme()
     const mobileMatch = useMediaQuery(theme.breakpoints.up('sm'))
-    console.log(`mobilematch`, mobileMatch)
+
     return (
         <div
             style={{
@@ -244,7 +244,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, postO
             aria-labelledby={`scrollable-auto-tab-${index}`}
             {...other}
         >
-            {value === index && children == 'Bài viết' && (
+            {value === index && children == 'Posts' && (
                 <Grid container spacing={5} className={classes.mainGrid}>
                     <Grid item xs={12} md={8}>
                         <Box p={3} style={{ display: 'flex' }}>
@@ -263,7 +263,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, postO
                         </Box>
                         <Divider style={{ marginBottom: '25px' }} />
                         <Grid container spacing={2} style={{ marginBottom: '10px' }}>
-                            {postes === null && <Typography className={classes.tex}>Không có bài đăng nào</Typography>}
+                            {postes === null && <Typography className={classes.tex}>No post here</Typography>}
                             {postes?.docs?.length > 0 &&
                                 postes.docs.map((post, index) => (
                                     <Grid key={index} item xs={12}>
@@ -346,7 +346,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, postO
                                                             </Grid>
                                                             <Grid item xs={6} style={{ margin: '9px 0px 10px 0px' }}>
                                                                 <Typography
-                                                                    variant="subtittle2"
+                                                                    variant="subtitle2"
                                                                     className={classes.dateTimePost}
                                                                 >
                                                                     {dateFormat(post.createdAt)}
@@ -501,7 +501,7 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, postO
                                                                     </Typography>
                                                                 </Link>
                                                                 <Typography
-                                                                    variant="subtittle2"
+                                                                    variant="subtitle2"
                                                                     className={classes.dateTimePost}
                                                                 >
                                                                     {timeCalculate(post.createdAt)}
@@ -592,9 +592,9 @@ function TabPanel({ children, value, index, postes, limit, page, onChange, postO
                     {postOfUser !== null && <UserSideBar postOfUser={postOfUser} />}
                 </Grid>
             )}
-            {children !== 'Bài viết' && (
+            {children !== 'Posts' && (
                 <>
-                    <Typography variant="h5">Không có dữ liệu</Typography>
+                    <Typography variant="h5">No data</Typography>
                 </>
             )}
         </div>

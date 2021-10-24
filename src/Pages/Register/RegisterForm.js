@@ -51,22 +51,22 @@ export default class RegisterForm extends Component {
             <Grid align="center">
                 <ValidatorForm ref="form" onSubmit={this.handleSubmit}>
                     <TextValidator
-                        label="Họ"
+                        label="First name"
                         onChange={this.handleChange}
                         name="firstName"
                         value={formData.firstName}
                         validators={['required']}
-                        errorMessages={['Bạn phải nhập họ']}
+                        errorMessages={['You have to input first name']}
                         style={{ width: 300 }}
                     />
                     <br />
                     <TextValidator
-                        label="Tên"
+                        label="Last name"
                         onChange={this.handleChange}
                         name="lastName"
                         value={formData.lastName}
                         validators={['required']}
-                        errorMessages={['Bạn phải nhập tên']}
+                        errorMessages={['You have to input last name']}
                         style={{ width: 300 }}
                     />
                     <br />
@@ -76,7 +76,7 @@ export default class RegisterForm extends Component {
                         name="userName"
                         value={formData.userName}
                         validators={['required']}
-                        errorMessages={['Bạn phải nhập user name']}
+                        errorMessages={['You have to input user name']}
                         style={{ width: 300 }}
                     />
                     <br />
@@ -86,7 +86,7 @@ export default class RegisterForm extends Component {
                         name="email"
                         value={formData.email}
                         validators={['required', 'isEmail']}
-                        errorMessages={['Bạn phải nhập email', 'Đây không phải email']}
+                        errorMessages={['You have to input email', 'This is not an email']}
                         style={{ width: 300 }}
                     />
                     <br />
@@ -97,7 +97,7 @@ export default class RegisterForm extends Component {
                         type="password"
                         value={formData.password}
                         validators={['required', 'minStringLength: 8']}
-                        errorMessages={['Bạn phải nhập mật khẩu', 'Bạn phải nhập tối thiểu 8 ký tự']}
+                        errorMessages={['You have to input password', 'You have to input at least 8 characters']}
                         style={{ width: 300 }}
                     />
                     <br />
@@ -109,7 +109,7 @@ export default class RegisterForm extends Component {
                                 marginTop: 20,
                             }}
                         >
-                            Đăng ký thành công
+                            Register is success
                         </ColorButton>
                     ) : (
                         <Button
@@ -119,7 +119,7 @@ export default class RegisterForm extends Component {
                                 marginTop: 20,
                             }}
                         >
-                            Đăng ký
+                            Register
                         </Button>
                     )}
                 </ValidatorForm>

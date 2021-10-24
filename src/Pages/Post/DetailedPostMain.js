@@ -20,6 +20,20 @@ import CommentIcon from '@material-ui/icons/Comment'
 import dateFormat from 'dateformat'
 import { Link } from 'react-router-dom'
 
+/**
+ * 
+ * @param {String} htmlString 
+ * @returns HTML DOM
+ */
+const renderHtmlFromHtmlString = (htmlString) => {
+    try {
+        return <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+    } catch (error) {
+        console.log(error.message)
+        return ''
+    }
+}
+
 export function timeCalculate(past, now) {
     now = new Date()
 
@@ -160,7 +174,7 @@ function DetailedPostMain(props) {
                                             variant="outlined"
                                             style={{ height: 20, textTransform: 'none', fontSize: 12 }}
                                         >
-                                            Theo dõi
+                                            Follow
                                         </Button>
                                     </Box>
                                 </Box>
@@ -169,7 +183,7 @@ function DetailedPostMain(props) {
                                 <Grid container direction="row" justifyContent="flex-end" alignItems="center">
                                     <Grid item>
                                         <Typography className={classes.postTime}>
-                                            {`Đã đăng vào ${dateFormat(post.createdAt)} - ${timeCalculate(
+                                            {`Posted at ${dateFormat(post.createdAt)} - ${timeCalculate(
                                                 post.createdAt
                                             )}`}
                                         </Typography>
@@ -177,7 +191,7 @@ function DetailedPostMain(props) {
                                     <Grid item>
                                         <Grid container>
                                             <Grid item>
-                                                <Tooltip title={`Lượt xem: ${post.views_count}`} style={{ height: 15 }}>
+                                                <Tooltip title={`Views: ${post.views_count}`} style={{ height: 15 }}>
                                                     <IconButton display="flex">
                                                         <VisibilityIcon color="disabled" style={{ height: 20 }} />
                                                         <Typography
@@ -190,7 +204,7 @@ function DetailedPostMain(props) {
                                             </Grid>
                                             <Grid item>
                                                 <Tooltip
-                                                    title={`Lượt bình luận: ${post.comments_count}`}
+                                                    title={`Comments: ${post.comments_count}`}
                                                     style={{ height: 15 }}
                                                 >
                                                     <IconButton display="flex">
@@ -205,7 +219,7 @@ function DetailedPostMain(props) {
                                             </Grid>
                                             <Grid item>
                                                 <Tooltip
-                                                    title={`Lượt like: ${post.likes_count}`}
+                                                    title={`Likes: ${post.likes_count}`}
                                                     style={{ height: 12 }}
                                                 >
                                                     <IconButton display="flex">
@@ -228,7 +242,8 @@ function DetailedPostMain(props) {
                         </Typography>
                         <Divider style={{ marginLeft: 25 }} />
                         <Typography variant="body2" gutterBottom style={{ padding: 25 }}>
-                            {post.content.replace(/(<([^>]+)>)/gi, '')}
+                            {/* {post.content.replace(/(<([^>]+)>)/gi, '')} */}
+                            {renderHtmlFromHtmlString(post.content)}
                         </Typography>
                         <img src={post.thumbnail} alt={post.title} className={classes.imgPost} />
                     </Grid>

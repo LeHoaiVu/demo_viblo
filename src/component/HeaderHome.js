@@ -217,8 +217,8 @@ const useStyles = makeStyles((theme) => ({
         color: 'black',
 
         [theme.breakpoints.down('sm')]: {
-            margin: '0px 10px 0px 100px',
-            padding: '0px 0px 0px 25px',
+            margin: '0px 10px 0px 115px',
+            
             color: 'white',
         },
     },
@@ -243,7 +243,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             width: 20,
             height: 20,
-            margin: '0px 0px 5px 10px'
+            margin: '0px 0px 5px 10px',
         },
     },
     textSearch: {
@@ -355,7 +355,7 @@ const HeaderHome = ({ props }) => {
                                         <NotificationsIcon />
                                     </Badge>
                                 </IconButton>
-                                <IconButton color="inherit">
+                                <IconButton color="inherit" onClick={()=>history.push('/publish/post')}>
                                     <BorderColorIcon />
                                 </IconButton>
                                 <IconButton
@@ -387,7 +387,7 @@ const HeaderHome = ({ props }) => {
                                     </StyledMenuItem>
                                     <StyledMenuItem
                                         onClick={() => {
-                                            history.push('/profile')
+                                            history.push(`/u/${auth.user._id}`)
                                         }}
                                     >
                                         <ListItemIcon style={{ padding: 8 }}>

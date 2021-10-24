@@ -8,6 +8,7 @@ import Header from '../../component/Header'
 import { Link } from 'react-router-dom'
 
 const Login = (props) => {
+
     const handleSubmit = async (formData) => {
         const res = await axios.post('https://haloha-backend.herokuapp.com/api/users/login', {
             username: formData.email,
@@ -38,7 +39,7 @@ const Login = (props) => {
             <Header />
             <div
                 style={{
-                    marginTop: '200px',
+                    marginTop: '100px',
                 }}
             >
                 <Grid>
@@ -46,9 +47,9 @@ const Login = (props) => {
                         elevation={10}
                         style={{
                             padding: 20,
-                            height: '55vh',
+                            height: '65vh',
                             width: 350,
-                            margin: '10px auto',
+                            margin: '0px auto',
                         }}
                     >
                         <Grid align="center">
@@ -60,7 +61,7 @@ const Login = (props) => {
                             >
                                 <LockOutlinedIcon />
                             </Avatar>
-                            <Typography variant="h6">Đăng Nhập</Typography>
+                            <Typography variant="h6">Login</Typography>
                         </Grid>
                         <LoginForm onSubmit={handleSubmit} />
                         <Grid

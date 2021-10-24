@@ -169,7 +169,7 @@ function DetailedUser(props) {
                                 color="primary"
                                 className={classes.followButton}
                             >
-                                Theo dõi
+                                Follow
                             </Button>
                         </Box>
                     </Container>

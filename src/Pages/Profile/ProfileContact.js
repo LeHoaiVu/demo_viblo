@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'
 import CustomSelect from '../../component/CustomSelect'
 import HeaderProfile from '../../component/HeaderProfile'
+import axios from 'axios'
 
 const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -43,9 +44,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     btnFormProfileContact: {
-        marginTop: 50,
+        marginTop: 30,
         [theme.breakpoints.down('sm')]: {
-            marginTop: 30,
+            marginTop: 20,
         },
     },
 }))
@@ -92,7 +93,7 @@ function ProfileContact(props) {
     const validate = (values) => {
         const errors = {}
 
-        if (!values.university || values.university === 'none') {
+        if (values.university === 'none') {
             errors.university = 'Bạn phải chọn trường đại học'
         }
 
@@ -110,32 +111,25 @@ function ProfileContact(props) {
 
         validate,
 
-        onSubmit: (values) => {
+        onSubmit: async(values) => {
             console.log(`Information updated`, values)
 
-            // values['gender'] = (values['gender'].toLowerCase() === 'true');
+            values['gender'] = (values['gender'].toLowerCase() === 'true');
 
-            // const res = await axios({
-            //     method: 'put',
-            //     url: 'https://haloha-backend.herokuapp.com/api/users',
-            //     data: values,
-            //     headers: {
-            //         Authorization: props.auth.token
-            //     }
-            // });
-            // if (res.data.success) {
-            //     // Action update user into redux store
-            //     let payload = JSON.parse(JSON.stringify(props.auth));
+            const res = await axios({
+                method: 'put',
+                url: 'https://haloha-backend.herokuapp.com/api/users',
+                data: values,
+                headers: {
+                    Authorization: props.auth.token
+                }
+            });
+            if (res.data.success) {
+                // Action update user into redux store
+                let payload = JSON.parse(JSON.stringify(props.auth));
 
-            //     for (let i=0;i<payload.user.length;i++) {
-            //         if (payload.user[i].id === res.payload.id) {
-            //             payload.user[i] = res.payload;
-            //             break;
-            //         }
-            //     }
-            //     window.location.reload();
-            //     props.setAuth(payload);
-            // }
+                props.setAuth(payload);
+            }
         },
     })
 
@@ -195,7 +189,7 @@ function ProfileContact(props) {
                                         />
                                     </Grid>
                                 </Grid>
-                                <Grid container alignItems="center" justifyContent="center" direction="row" spacing={2}>
+                                <Grid container alignItems="center" justifyContent="center" direction="row" spacing={2} >
                                     <Grid item xs={6}>
                                         <TextField
                                             variant="outlined"
@@ -239,7 +233,7 @@ function ProfileContact(props) {
                                     type="submit"
                                     className={classes.btnFormProfileContact}
                                 >
-                                    Cập Nhật
+                                    Update
                                 </Button>
                             </form>
                         </div>

@@ -18,8 +18,7 @@ import ProfileEmail from '../Pages/Profile/ProfileEmail'
 import SecurityPassword from '../Pages/Security/SecurityPassword'
 import DetailedPost from '../Pages/Post/DetailedPost'
 import DetailedUser from '../Pages/User/DetailedUser'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { useTheme } from '@material-ui/core/styles'
+import PublishingPost from '../Pages/Post/PublishingPost'
 
 function mapStateToProps(state) {
     return {
@@ -160,6 +159,17 @@ class MainContainer extends Component {
                                 render={(props) =>
                                     auth?.logged ? (
                                         <SecurityPassword {...props} {...this.props} />
+                                    ) : (
+                                        <Redirect to="/login" />
+                                    )
+                                }
+                            />
+                            <Route
+                                path="/publish/post"
+                                exact
+                                render={(props) =>
+                                    auth?.logged ? (
+                                        <PublishingPost {...props} {...this.props} />
                                     ) : (
                                         <Redirect to="/login" />
                                     )
